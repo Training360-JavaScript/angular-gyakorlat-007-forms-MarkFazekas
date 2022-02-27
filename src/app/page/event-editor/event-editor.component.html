@@ -1,0 +1,42 @@
+<div class="row" *ngIf="event">
+  <div class="col-6 offset-3">
+    <form #eventForm="ngForm" (ngSubmit)="onUpdate(eventForm)">
+      <input type="hidden" name="id" [(ngModel)]="event.id">
+      <div class="form-group">
+        <label>Name</label>
+        <input [(ngModel)]="event.name" name="name" type="text" class="form-control" pattern=".{8,}" required>
+        <div [hidden]="eventForm.controls.name?.valid" class="error-message">
+          A névnek minimum 8 karakter hosszúnak kell lennie!
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Date</label>
+        <input [(ngModel)]="event.date" name="date" type="text" class="form-control" pattern=".{1,}" required>
+        <div [hidden]="eventForm.controls.date?.valid" class="error-message">
+          A date minimum 1karakter hosszúnak kell lennie!
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>time</label>
+        <input [(ngModel)]="event.time" name="time" type="text" class="form-control" pattern=".{1,}" required>
+        <div [hidden]="eventForm.controls.time?.valid" class="error-message">
+          A time minimum 1karakter hosszúnak kell lennie!
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>location</label>
+        <input [(ngModel)]="event.location" name="location" type="text" class="form-control" pattern=".{1,}" required>
+        <div [hidden]="eventForm.controls.location?.valid" class="error-message">
+          A location minimum 1karakter hosszúnak kell lennie!
+        </div>
+      </div>
+
+      <button [disabled]="eventForm.invalid" class="btn btn-block btn-primary">
+        <i class="fa fa-save"></i>
+      </button>
+    </form>
+  </div>
+</div>
